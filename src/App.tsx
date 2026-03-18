@@ -21,8 +21,8 @@ function renderPage(page: PageKey) {
 
 function App() {
   const [page, setPage] = useState<PageKey>(() => parseHash(window.location.hash));
-  const isAuthGatePage = page === "assets" || page === "profile";
   const isPublicLanding = page === "ipo" || page === "ai";
+  const isHomePage = page === "home";
 
   useEffect(() => {
     const handleHashChange = () => setPage(parseHash(window.location.hash));
@@ -38,12 +38,12 @@ function App() {
   return (
     <div className="min-h-screen bg-[var(--surface-1)] text-[var(--text-primary)]">
       <AmbientGlow />
-      {isAuthGatePage ? null : isPublicLanding ? <PublicHeader currentPage={page} /> : <DashboardHeader currentPage={page} />}
-      <main className={isAuthGatePage ? "relative min-h-screen" : "relative mx-auto max-w-5xl px-5 pb-28 pt-7 lg:px-8 lg:py-8"}>
-        {isAuthGatePage || isPublicLanding ? null : <PageLead currentPage={page} />}
+      {isPublicLanding ? <PublicHeader currentPage={page} /> : <DashboardHeader currentPage={page} />}
+      <main className={isPublicLanding ? "relative mx-auto max-w-5xl px-5 pb-28 pt-0 lg:px-8 lg:pb-8" : "relative mx-auto max-w-5xl px-5 pb-28 pt-7 lg:px-8 lg:py-8"}>
+        {isHomePage ? <PageLead currentPage={page} /> : null}
         {renderPage(page)}
       </main>
-      {isAuthGatePage ? null : <MobileTabBar currentPage={page} />}
+      <MobileTabBar currentPage={page} />
     </div>
   );
 }

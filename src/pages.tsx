@@ -212,54 +212,131 @@ export function AiPage() {
 }
 
 export function AssetsPage() {
-  return <AuthPage />;
+  return (
+    <div className="pb-8">
+      <section className="mb-6">
+        <h1 className="text-[22px] font-bold text-[#1E2420]">資產組合</h1>
+        <p className="mt-1 text-sm text-[var(--text-secondary)]">您的持倉與表現</p>
+      </section>
+
+      <section className="mb-4 rounded-[1.4rem] border border-[rgba(237,237,237,0.72)] bg-white px-6 py-5 shadow-[0_12px_28px_rgba(16,24,18,0.04)]">
+        <div className="mb-3 text-xs font-semibold text-[var(--text-tertiary)]">資產組合總值</div>
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-end gap-2">
+            <span className="text-[3rem] font-bold tracking-[-0.07em] text-[#1E2420]">0.00</span>
+            <span className="pb-2 text-xl font-semibold text-[var(--text-secondary)]">USDT</span>
+          </div>
+          <div className="text-sm font-semibold text-[var(--text-tertiary)]">盈虧 —</div>
+        </div>
+      </section>
+
+      <div className="mb-10 flex items-center gap-8 border-b border-[var(--surface-3)]">
+        {["持倉", "打新申購", "歷史"].map((label, index) => (
+          <button
+            key={label}
+            className={
+              index === 0
+                ? "relative pb-3 text-sm font-semibold text-[#1E2420] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-8 after:rounded-full after:bg-[var(--brand-light)]"
+                : "pb-3 text-sm font-medium text-[var(--text-tertiary)]"
+            }
+            type="button"
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      <section className="flex min-h-[22rem] flex-col items-center justify-center text-center">
+        <div className="mb-4 grid h-18 w-18 place-items-center rounded-[1.6rem] bg-[linear-gradient(180deg,#f7fff1_0%,#f2f9ec_100%)] shadow-[0_12px_24px_rgba(170,232,116,0.16)]">
+          <div className="rounded-[1.1rem] bg-[linear-gradient(180deg,#dff5bf_0%,#b8e97f_100%)] px-4 py-3 text-[32px] text-white">▤</div>
+        </div>
+        <h3 className="text-lg font-semibold text-[#1E2420]">暫無持倉</h3>
+        <p className="mt-2 text-sm text-[var(--text-secondary)]">申購 IPO 或入金開始交易。</p>
+        <a className="mt-5 rounded-full bg-[var(--brand-light)] px-8 py-3 text-sm font-semibold text-[#1E2420]" href={pageHref("ipo")}>
+          瀏覽打新
+        </a>
+      </section>
+    </div>
+  );
 }
 
 export function ProfilePage() {
-  return <AuthPage />;
-}
-
-function AuthPage() {
   return (
-    <section className="flex min-h-screen items-center justify-center px-6">
-      <div className="w-full max-w-sm text-center">
-        <img alt="Leapcat" className="mx-auto mb-4 h-16" src="/assets/logo-notext-light.svg" />
-        <h1 className="text-2xl font-bold text-[var(--text-primary)]">歡迎使用 Leapcat</h1>
-        <p className="mt-3 text-[15px] text-[var(--text-secondary)]">登入以參與港股打新、AI 交易及全球資產投資</p>
-
-        <button
-          className="mt-8 flex w-full items-center justify-center gap-3 rounded-full border border-[var(--border)] bg-white py-3.5 text-base font-semibold text-[var(--text-primary)] transition hover:bg-[var(--surface-1)]"
-          type="button"
-        >
-          <span className="grid h-6 w-6 place-items-center rounded-full bg-[#fff] text-[15px] shadow-[0_1px_6px_rgba(16,24,18,0.12)]">G</span>
-          <span>使用 Google 繼續</span>
-        </button>
-
-        <div className="my-5 flex items-center gap-4 text-[var(--text-tertiary)]">
-          <div className="h-px flex-1 bg-[var(--border)]" />
-          <span className="text-sm">或</span>
-          <div className="h-px flex-1 bg-[var(--border)]" />
+    <div className="pb-8">
+      <section className="relative mx-[calc(50%-50vw)] mb-6 overflow-hidden bg-[#aeea6f] px-5">
+        <div className="mx-auto flex min-h-[92px] max-w-5xl items-center justify-between py-5 lg:min-h-[126px] lg:px-6">
+          <div className="relative z-10">
+            <h1 className="text-[22px] font-bold text-[#1E2420]">我的帳戶</h1>
+            <p className="mt-1 text-sm text-[#5c7c4f]">查看、管理您的帳戶資訊</p>
+          </div>
+          <img alt="" className="absolute -right-16 top-0 h-full w-auto object-cover object-left lg:right-0 lg:object-contain" src="/assets/profile-banner-bg.svg" />
         </div>
+      </section>
 
-        <input
-          className="w-full rounded-lg border border-transparent bg-[var(--surface-2)] px-4 py-3.5 text-base text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none"
-          placeholder="請輸入電子郵件地址"
-          readOnly
-          value=""
+      <section className="mb-4 rounded-[1.5rem] border border-[rgba(237,237,237,0.8)] bg-white px-4 py-4 shadow-[0_12px_28px_rgba(16,24,18,0.04)] lg:px-5">
+        <div className="flex items-center gap-4">
+          <div className="grid h-14 w-14 place-items-center rounded-full bg-[radial-gradient(circle_at_32%_28%,#e7ffc8_0%,#cbf08c_42%,#a7df71_100%)] text-xl font-black text-[#3d6f38]">H</div>
+          <div className="min-w-0">
+            <div className="truncate text-xl font-bold text-[var(--text-primary)]">harrywork987@outlook.com</div>
+            <div className="truncate text-sm text-[var(--text-secondary)]">harrywork987@outlook.com</div>
+            <div className="mt-1 text-xs font-medium text-[#f0a142]">• 未認證</div>
+          </div>
+        </div>
+      </section>
+
+      <a className="mb-6 flex items-center gap-3 overflow-hidden rounded-2xl border border-[#f4dfaa] bg-[linear-gradient(90deg,#FFF9EA_0%,#FFF4DB_48%,rgba(255,247,232,0.88)_100%)] p-4 transition hover:opacity-90" href={pageHref("profile")}>
+        <div className="grid h-10 w-10 place-items-center rounded-2xl bg-white text-[#f0ae42] shadow-[0_8px_18px_rgba(255,188,74,0.14)]">🛡</div>
+        <div className="flex-1">
+          <h3 className="text-sm font-semibold text-amber-700">完成 KYC 認證</h3>
+          <p className="mt-1 text-xs font-medium text-[#df9b47]">需完成認證才能參與打新和交易</p>
+        </div>
+        <ChevronRight className="text-[#d6902d]" />
+      </a>
+
+      <ProfileSection title="資金管理">
+        <ProfileRow title="入金" subtitle="USDT / USDC 支援 ERC-20、TRC-20、Solana、Base" />
+        <ProfileRow title="出金" subtitle="提取穩定幣至外部錢包" />
+        <ProfileRow title="交易記錄" subtitle="查看所有入金和出金記錄" />
+      </ProfileSection>
+
+      <ProfileSection title="安全設定">
+        <ProfileRow title="雙重驗證" subtitle="未啟用" trailing={<div className="relative h-6 w-11 rounded-full bg-[var(--surface-3)]"><span className="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-sm" /></div>} />
+        <ProfileRow title="交易密碼" subtitle="尚未設定" />
+        <ProfileRow title="已連結裝置" subtitle="已連結 2 部裝置" />
+      </ProfileSection>
+
+      <ProfileSection title="一般設定">
+        <ProfileRow
+          title="語言"
+          trailing={
+            <div className="flex items-center gap-1 rounded-full bg-[var(--surface-1)] px-2 py-1">
+              {["HK", "US", "JP", "KR", "VN"].map((lang, index) => (
+                <span
+                  key={lang}
+                  className={
+                    index === 0
+                      ? "rounded-md bg-[var(--brand-light)] px-2 py-0.5 text-[11px] font-medium text-[#1E2420] shadow-sm"
+                      : "rounded-md px-2 py-0.5 text-[11px] font-medium text-[var(--text-secondary)]"
+                  }
+                >
+                  {lang}
+                </span>
+              ))}
+            </div>
+          }
         />
+        <ProfileRow title="通知" subtitle="打新提醒、交易確認" />
+        <ProfileRow title="服務條款" />
+        <ProfileRow title="隱私政策" />
+        <ProfileRow title="幫助中心" subtitle="support@leapcat.ai" />
+      </ProfileSection>
 
-        <button
-          className="mt-4 w-full rounded-full bg-[linear-gradient(90deg,#d0f1a0_0%,#c7f091_100%)] py-3.5 text-base font-semibold text-[var(--text-secondary)]"
-          type="button"
-        >
-          使用電子郵件繼續
-        </button>
+      <div className="mt-8 text-center text-xs text-[var(--text-secondary)]">Leapcat v1.0.0 · 持有新西蘭 FMA 牌照</div>
 
-        <p className="mt-6 text-xs leading-6 text-[var(--text-secondary)]">
-          繼續即表示您同意我們的 <span className="text-[var(--brand-dark)]">服務條款</span> 和 <span className="text-[var(--brand-dark)]">隱私政策</span>
-        </p>
-      </div>
-    </section>
+      <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl border border-red-200/60 py-3.5 text-sm font-medium text-[#da5b58] transition hover:bg-red-50" type="button">
+        登出
+      </button>
+    </div>
   );
 }
 
@@ -462,6 +539,43 @@ function MetricCard({ value, label }: { value: string; label: string }) {
     <div className="rounded-[1.2rem] border border-[rgba(237,237,237,0.8)] bg-white px-5 py-4 text-center shadow-[0_10px_24px_rgba(16,24,18,0.04)]">
       <div className="text-[36px] font-bold tracking-[-0.06em] text-[var(--brand-dark)]">{value}</div>
       <div className="mt-1 text-sm text-[var(--text-secondary)]">{label}</div>
+    </div>
+  );
+}
+
+function ProfileSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mb-6">
+      <h3 className="mb-2 px-1 text-xs font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">{title}</h3>
+      <div className="overflow-hidden rounded-2xl border border-[rgba(237,237,237,0.8)] bg-white shadow-[0_12px_28px_rgba(16,24,18,0.04)]">
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function ProfileRow({
+  title,
+  subtitle,
+  trailing,
+}: {
+  title: string;
+  subtitle?: string;
+  trailing?: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-center gap-3.5 border-b border-[rgba(237,237,237,0.72)] px-5 py-4 last:border-b-0">
+      <div className="flex-1">
+        <div className="text-sm font-semibold text-[var(--text-primary)]">{title}</div>
+        {subtitle ? <div className="mt-1 text-xs text-[var(--text-secondary)]">{subtitle}</div> : null}
+      </div>
+      {trailing ?? <ChevronRight className="text-[var(--text-tertiary)]" />}
     </div>
   );
 }
