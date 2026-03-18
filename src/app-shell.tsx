@@ -14,7 +14,7 @@ export function pageHref(page: PageKey): string {
   return page === "home" ? "#/" : `#/${page}`;
 }
 
-export function DesktopHeader({ currentPage }: { currentPage: PageKey }) {
+export function DashboardHeader({ currentPage }: { currentPage: PageKey }) {
   return (
     <header className="sticky top-0 z-50 hidden border-b border-[var(--border)] bg-[rgba(255,255,255,0.82)] backdrop-blur-xl lg:block">
       <div className="mx-auto flex h-16 max-w-7xl items-center px-6">
@@ -53,6 +53,47 @@ export function DesktopHeader({ currentPage }: { currentPage: PageKey }) {
             <Avatar />
             <span className="font-semibold text-[var(--text-primary)]">harrywork987@outlook.com</span>
             <span className="text-xs">▾</span>
+          </a>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export function PublicHeader({ currentPage }: { currentPage: PageKey }) {
+  return (
+    <header className="sticky top-0 z-50 hidden border-b border-[var(--border)] bg-white/96 backdrop-blur-lg lg:block">
+      <div className="mx-auto flex h-16 max-w-7xl items-center px-6">
+        <a className="flex items-center gap-3" href={pageHref("home")}>
+          <img alt="Leapcat" className="h-8" src="/assets/logo-hor-light.svg" />
+        </a>
+
+        <nav className="ml-8 flex items-center gap-1">
+          {navItems.slice(0, 4).map((item) => (
+            <a
+              key={item.key}
+              className={
+                currentPage === item.key
+                  ? "rounded-lg bg-[var(--brand-50)] px-4 py-2 text-sm font-medium text-[var(--brand-dark)] transition"
+                  : "rounded-lg px-4 py-2 text-sm font-medium text-[var(--text-secondary)] transition hover:bg-[var(--surface-2)] hover:text-[var(--text-primary)]"
+              }
+              href={pageHref(item.key)}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="ml-auto flex items-center gap-3">
+          <button className="flex h-9 items-center gap-1 rounded-lg px-2 text-sm text-[var(--text-secondary)] transition hover:bg-[var(--surface-2)]" type="button">
+            <span>🇭🇰</span>
+            <span>繁中</span>
+          </button>
+          <a
+            className="rounded-full bg-[var(--brand-light)] px-4 py-2 text-sm font-semibold text-[#1d231f] transition hover:brightness-95"
+            href={pageHref("profile")}
+          >
+            登入
           </a>
         </div>
       </div>

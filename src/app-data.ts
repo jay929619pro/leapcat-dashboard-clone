@@ -128,6 +128,19 @@ export const upcomingIpos: IpoItem[] = [
   },
 ];
 
+export const listedIpos: IpoItem[] = [
+  {
+    code: "08610.HK",
+    title: "BBSB INTL",
+    subtitle: "已上市",
+    price: "HK$0.60 - HK$0.70",
+    status: "已上市",
+    countdown: "+0.0%",
+    icon: "B",
+    bookMultiple: "上市價 HK$0.70",
+  },
+];
+
 export const holdings: Holding[] = [
   {
     name: "USDT 現金倉",
